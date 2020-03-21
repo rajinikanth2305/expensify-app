@@ -35,7 +35,7 @@
     "react-addons-shallow-compare": "15.6.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dates": "12.7.0",
-    "react-dom": "16.0.0",
+    "react-dom": "16.0.1",
     "react-dropdown": "^1.6.4",
     "react-modal": "2.2.2",
     "react-model": "2.2.2",
