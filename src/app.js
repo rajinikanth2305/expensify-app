@@ -31,14 +31,11 @@ require("history").createBrowserHistory;
 
  
  const store=configureStore();
- console.log(store.getState())
 setTimeout(()=>
 {
    store.dispatch(setTextFilter("water bill")) 
 },3800)
-//const state=store.getState();
-//const visibleExpenses=getVisibleExpenses(state.expenses,state.filters)
-//console.log(visibleExpenses)
+
 const JSX=(
     <Provider store={store}>
     <AppRouter />
