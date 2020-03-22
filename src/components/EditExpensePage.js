@@ -27,6 +27,7 @@ export class EditExpensePage extends React.Component{
   }
   render()
   {
+    console.log("running")
     return(
       <div>
       <h1>{this.props.expense.description}</h1>
