@@ -8,7 +8,8 @@ module.exports =(env)=> {
   return{
     entry: './src/app.js',
     output: {
-    path: path.join(__dirname, 'public'),
+    path: path.join(__dirname, 'public','dist'),
+    //we are giving above path to store bundle.js file
     filename: 'bundle.js'
   },
   module: {
@@ -48,7 +49,8 @@ module.exports =(env)=> {
   devServer:{
     contentBase:path.join(__dirname, 'public'),
     port: 8080,
-    historyApiFallback:true
+    historyApiFallback:true,
+    publicPath:'/dist/'
 
   },
   node: {
