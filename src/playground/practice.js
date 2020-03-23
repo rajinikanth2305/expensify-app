@@ -1,5 +1,5 @@
 import React from "react"
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 import ReactDOM from 'react-dom';
 import {Provider} from "react-redux"
 import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } from '../actions/filters';

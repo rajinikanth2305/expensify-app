@@ -1,7 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-
-
+import moment from "moment"
+import numeral from "numeral"
 //export stateless functional component 
 //render few pieces of information 
 //description 
@@ -12,7 +12,10 @@ const ExpenseListItem=({id,description,amount,createAt})=>(
     <NavLink to ={`/edit/${id}`} exact={true}>
     <h1>{description}</h1>
     </NavLink>
-    <p>{amount}-{createAt}</p>
+    <p>
+    {numeral(amount/100).format('$0,0.00')}
+    -
+    {moment(createAt).format("MMMM Do,YYYY")}</p>
     <p>{id}</p>
     </div>
  
