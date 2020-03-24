@@ -31,10 +31,6 @@ require("history").createBrowserHistory;
 
  
  const store=configureStore();
-setTimeout(()=>
-{
-   store.dispatch(setTextFilter("water bill")) 
-},3800)
 
 const JSX=(
     <Provider store={store}>

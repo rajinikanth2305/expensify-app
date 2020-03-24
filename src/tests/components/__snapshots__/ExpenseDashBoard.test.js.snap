@@ -2,6 +2,7 @@
 
 exports[`should render expense dashboard as exactly 1`] = `
 <div>
+  <Connect(ViewTotalExpenses) />
   <Connect(ExpenseListFilters) />
   <Connect(ExpenseList) />
 </div>
