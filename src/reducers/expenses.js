@@ -1,5 +1,23 @@
 //expenses reducer
+import database from "../firebase/firebase"
 const expensesReducerDefaultSate=[];
+
+database.ref("expenses").once("value").then((snapshot)=>
+{
+
+    snapshot.forEach((childsnapshot)=>
+    {
+        expensesReducerDefaultSate.push(
+            {
+               id:childsnapshot.key,
+               ...childsnapshot.val()
+            }
+        )
+    })
+
+})
+
+
 export default (state=expensesReducerDefaultSate,action)=>
 {
     switch(action.type)

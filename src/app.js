@@ -16,6 +16,8 @@ import getVisibleExpenses from "./selectors/expenses"
 import {Provider} from "react-redux"
 import "react-dates/lib/css/_datepicker.css";
 require("history").createBrowserHistory;
+import "./firebase/firebase";
+//import "./playground/promises"
 //setup options prop for options component
 //render the length of the array
 
