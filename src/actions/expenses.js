@@ -49,7 +49,7 @@ export const startRemoveExpense=({id}={})=>
   console.log(id);
   return (dispatch)=>
   {
-    database.ref(`expenses/${id}`).remove().then(()=>
+    return database.ref(`expenses/${id}`).remove().then(()=>
     {
       dispatch(removeExpense({id}))
     }).catch((e)=>
@@ -58,6 +58,11 @@ export const startRemoveExpense=({id}={})=>
     })
   }
 }
+
+//we have to return keyword fro database.ref because for test case
+//set up edit expense that we can dispatch to firebase
+
+
 //expenses/${actions[0].expense.id}
 //remove expense
 
@@ -79,7 +84,16 @@ export const editExpense=(id,updates)=>(
         updates
     }
 )
-
+export const startEditExpense=(id,updates)=>
+{
+  return (dispatch)=>
+  {
+    return database.ref(`expenses/${id}`).update(updates).then(()=>
+    {
+      dispatch(editExpense(id,updates))
+    })
+  }
+}
 
 //SET_EXPENSES
 export const setExpenses=(expenses)=>(

@@ -2,13 +2,13 @@ import React from "react"
 import {shallow} from 'enzyme'
 import  expenses from "../fixtures/expenses";
 import {EditExpensePage} from "../../components/EditExpensePage";
-let editExpense,removeExpense,startRemoveExpense,history,wrapper;
+let startEditExpense,removeExpense,startRemoveExpense,history,wrapper;
 beforeEach(()=>
 {
-    editExpense=jest.fn();
+    startEditExpense=jest.fn();
     startRemoveExpense=jest.fn();
     history={push:jest.fn()};
-    wrapper=shallow(<EditExpensePage expense={expenses[0]} editExpense={editExpense} startRemoveExpense={startRemoveExpense} history={history} />)
+    wrapper=shallow(<EditExpensePage expense={expenses[0]} startEditExpense={startEditExpense} startRemoveExpense={startRemoveExpense} history={history} />)
 }
 )
 test("should render edit expense page properly",()=>
@@ -22,7 +22,7 @@ test("should handle edit expense page properly",()=>
 
     wrapper.find('ExpenseForm').prop('onSubmit')(expenses[0]); //passing parameter to spy function here
     expect(history.push).toHaveBeenLastCalledWith("/");
-    expect(editExpense).toHaveBeenLastCalledWith(expenses[0].id,expenses[0])
+    expect(startEditExpense).toHaveBeenLastCalledWith(expenses[0].id,expenses[0])
 })
 //spy
 
