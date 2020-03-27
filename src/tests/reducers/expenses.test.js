@@ -71,7 +71,7 @@ test("should edit an expense to array with valid id",()=>
 
 //should not edit expense if id is not found
 
-test("should not edit an expense to array with valid id",()=>
+test("should not edit an expense to array with invalid id",()=>
 {
     const amount=1000;
     
@@ -85,4 +85,14 @@ test("should not edit an expense to array with valid id",()=>
     }
     const state=expensesReducer(expenses,action);
     expect(state).toEqual(expenses);
+})
+
+test("should set expenses",()=>
+{
+    const action={
+        type:"SET_EXPENSES",
+        expenses:[expenses[1]]
+    }
+    const state=expensesReducer(expenses,action);
+    expect(state).toEqual([expenses[1]])
 })

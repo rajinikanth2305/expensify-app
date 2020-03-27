@@ -10,7 +10,7 @@ import "./styles/style.scss";
 import "normalize.css/normalize.css";
 import {BrowserRouter,Route,Switch,Link,NavLink} from "react-router-dom"
 import AppRouter from "./routers/AppRoute"
-import {addExpense} from "./actions/expenses.js";
+import {startSetExpenses} from "./actions/expenses.js";
 import {setTextFilter} from "./actions/filters"
 import getVisibleExpenses from "./selectors/expenses"
 import {Provider} from "react-redux"
@@ -39,5 +39,11 @@ const JSX=(
     <AppRouter />
     </Provider>
 )
-ReactDOM.render(JSX,document.getElementById("app"));
-export default createBrowserHistory()
+
+ReactDOM.render(<p>Loading ....</p>,document.getElementById("app"));
+store.dispatch(startSetExpenses()).then(()=>
+{
+    ReactDOM.render(JSX,document.getElementById("app"));
+
+})
+
