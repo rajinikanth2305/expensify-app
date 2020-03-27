@@ -43,7 +43,22 @@ export const startAddExpense = (expenseData = {}) => {
     };
   };
   
+//setup remove expense that we can dispatch to firebase
+export const startRemoveExpense=({id}={})=>
+{
+  console.log(id);
+  return (dispatch)=>
+  {
+    database.ref(`expenses/${id}`).remove().then(()=>
+    {
+      dispatch(removeExpense({id}))
+    }).catch((e)=>
+    {
 
+    })
+  }
+}
+//expenses/${actions[0].expense.id}
 //remove expense
 
 
@@ -83,6 +98,7 @@ export const startSetExpenses=()=>
 {
   return (dispatch)=>
   {
+    console.log(dispatch);
     return database.ref("expenses").once("value").then((snapshot)=>
     {
       const expenses=[];

@@ -14,7 +14,10 @@ var Config = {
 firebase.initializeApp(Config);
 const database=firebase.database();
 
-
+database.ref("expenses/-M3RUVNr8vlDL4fUOfby").remove().then((snapshot)=>
+{
+    console.log(snapshot.val())
+})
 
 export {firebase,database as default};
 /*database.ref("expenses").once("value").then((snapshot)=>
