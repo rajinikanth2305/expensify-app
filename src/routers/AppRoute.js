@@ -3,34 +3,39 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //import "./styles/style.scss";
 //import "normalize.css/normalize.css";
-import {BrowserRouter,Route,Switch,Link,NavLink} from "react-router-dom"
+import {Router,Route,Switch,Link,NavLink} from "react-router-dom"
+import createHistory from "history/createBrowserHistory"
+
 import AddExpensePage from "../components/AddExpense";
 import Header from "../components/Header";
 import NotPage from "../components/NotPage";
 import HelpPage from "../components/HelpPage";
 import EditExpensePage from "../components/EditExpensePage";
 import ExpenseDashboardPage from "../components/ExpenseDashBoard";
+import LoginPage from "../components/LoginPage"
+import PrivateRoute from "./PrivateRoute"
 
 //setup options prop for options component
 //render the length of the array
 
-
+export const history=createHistory();
 //options class should render static text
 
 const AppRouter=()=>(
-    <BrowserRouter>
+    <Router history={history}>
     <div>
-    <Header />
     <Switch>
-
-    <Route path="/" component={ExpenseDashboardPage} exact={true}/>
-    <Route path="/create" component={AddExpensePage}/>
-    <Route path="/edit/:id" component={EditExpensePage}/>
+    <Route path="/" component={LoginPage} exact={true}/>
+    <PrivateRoute path="/dashboard" component={ExpenseDashboardPage} />
+    <PrivateRoute path="/create" component={AddExpensePage}/>
+    <PrivateRoute path="/edit/:id" component={EditExpensePage}/>
     <Route path="/help" component={HelpPage}/>
     <Route component={NotPage} />
     </Switch>
     </div>
-    </BrowserRouter>
+
+
+    </Router>
 
 
 );

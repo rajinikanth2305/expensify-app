@@ -9,14 +9,14 @@ import configureStore from "./store/configureStore"
 import "./styles/style.scss";
 import "normalize.css/normalize.css";
 import {BrowserRouter,Route,Switch,Link,NavLink} from "react-router-dom"
-import AppRouter from "./routers/AppRoute"
+import AppRouter ,{ history } from "./routers/AppRoute"
 import {startSetExpenses} from "./actions/expenses.js";
-import {setTextFilter} from "./actions/filters"
+import {login,logout} from "./actions/auth"
 import getVisibleExpenses from "./selectors/expenses"
 import {Provider} from "react-redux"
 import "react-dates/lib/css/_datepicker.css";
 require("history").createBrowserHistory;
-import "./firebase/firebase";
+import {firebase} from "./firebase/firebase";
 //import "./playground/promises"
 //setup options prop for options component
 //render the length of the array
@@ -33,7 +33,15 @@ import "./firebase/firebase";
 
  
  const store=configureStore();
-
+let hasRendered=false;
+const renderApp=()=>
+{
+    if(!hasRendered)
+    {
+        ReactDOM.render(JSX,document.getElementById("app"));
+        hasRendered=true;
+    }
+}
 const JSX=(
     <Provider store={store}>
     <AppRouter />
@@ -41,9 +49,25 @@ const JSX=(
 )
 
 ReactDOM.render(<p>Loading ....</p>,document.getElementById("app"));
-store.dispatch(startSetExpenses()).then(()=>
+
+
+firebase.auth().onAuthStateChanged((user)=>
 {
-    ReactDOM.render(JSX,document.getElementById("app"));
-
+    if(user)
+    {
+        store.dispatch(login(user.uid))
+        console.log('uid',user.uid)
+        store.dispatch(startSetExpenses()).then(()=>{
+            renderApp();
+            if(history.location.pathname==="/")
+            {
+                history.push("/dashboard")
+            }
+        })
+    }
+    else{
+        store.dispatch(logout());
+        renderApp();
+        history.push("/")
+    }
 })
-
