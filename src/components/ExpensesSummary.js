@@ -8,7 +8,7 @@ import numeral from "numeral"
 export const ViewTotalExpenses=({total,length})=>
 {
     const expenseWord= length===1? "expense": "expenses";
-    const formattedExpenseTotal=numeral(total/100).format(('0,0.00'));
+    const formattedExpenseTotal=numeral(total/100).format(('$0,0.00'));
     return(
         <div className="page-header">
         <div className="content-container">
