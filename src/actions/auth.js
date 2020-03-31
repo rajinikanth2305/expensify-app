@@ -1,4 +1,5 @@
 import {firebase,googleAuthProvider} from "../firebase/firebase"
+import * as firebaseui from 'firebaseui'
 
 export const login=(uid)=>(
 {
@@ -8,8 +9,9 @@ export const login=(uid)=>(
 )
 export const startLogin=()=>
 {
-    return ()=>
+    return (dispatch,getState)=>
     {
+        console.log(getState())
         return firebase.auth().signInWithPopup(googleAuthProvider).then((result)=>
         {
             var token=result.credential.accessToken;

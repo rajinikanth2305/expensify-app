@@ -11,11 +11,21 @@ if (process.env.NODE_ENV === 'test') {
 } else if (process.env.NODE_ENV === 'development') {
   require('dotenv').config({ path: '.env.dev' });
 }
+
+//for production we have to set heroku environment varibales using command line
+//using heroku config:set key=value
+//for example heroku config:set FIREBASE_API_KEY=AIzaSyC1PljHeSgE95xctBJTwF3mjjd3tQwbCrc
+//like above we have to setup for the database for all key value pairs
+//we dont need to commit the .env.dev and .env.test 
+ //we added babale polyfill in entry path beacsue to support our application in all browsers
+ //we have to install first babel polyfill
+
+
 module.exports =(env)=> {
   const isProduction= env==="production";
   const CSSExtract=new ExtractTextPlugin('styles.css');
   return{
-    entry: './src/app.js',
+    entry: ["babel-polyfill",'./src/app.js'],
     output: {
     path: path.join(__dirname, 'public','dist'),
     //we are giving above path to store bundle.js file

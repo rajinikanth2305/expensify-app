@@ -15,7 +15,6 @@ import LoginPage from "../components/LoginPage"
 import PrivateRoute from "./PrivateRoute"
 import PublicRoute from "./PublicRoute"
 
-
 //setup options prop for options component
 //render the length of the array
 

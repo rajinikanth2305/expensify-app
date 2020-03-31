@@ -17,6 +17,8 @@ import {Provider} from "react-redux"
 import "react-dates/lib/css/_datepicker.css";
 require("history").createBrowserHistory;
 import {firebase} from "./firebase/firebase";
+import LoadingPage from "./components/LoadingPage"
+
 //import "./playground/promises"
 //setup options prop for options component
 //render the length of the array
@@ -48,10 +50,10 @@ const JSX=(
     </Provider>
 )
 
-ReactDOM.render(<p>Loading ....</p>,document.getElementById("app"));
+ReactDOM.render(<LoadingPage />,document.getElementById("app"));
 
 
-firebase.auth().onAuthStateChanged((user)=>
+ firebase.auth().onAuthStateChanged((user)=>
 {
     if(user)
     {

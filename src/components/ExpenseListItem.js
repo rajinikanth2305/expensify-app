@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import moment from "moment"
 import numeral from "numeral"
 //export stateless functional component 
@@ -7,18 +7,18 @@ import numeral from "numeral"
 //description 
 //amount
 //creat//
-const ExpenseListItem=({id,description,amount,createAt})=>(
-    <div>
-    <NavLink to ={`/edit/${id}`} exact={true}>
-    <h1>{description}</h1>
+const ExpenseListItem = ({ id, description, amount, createAt }) => (
+    <NavLink className="list-item" to={`/edit/${id}`} exact={true}>
+        <div>
+            <h3 className="list-item__title">{description}</h3>
+            <span className="list-item__subtitle">{moment(createAt).format("MMMM Do,YYYY")}</span>
+        </div>
+        <h3 className="list-item__data">{numeral(amount / 100).format('0,0.00')}
+        </h3>
+
     </NavLink>
-    <p>
-    {numeral(amount/100).format('$0,0.00')}
-    -
-    {moment(createAt).format("MMMM Do,YYYY")}</p>
-    <p>{id}</p>
-    </div>
- 
+
+
 )
 export default ExpenseListItem;
 

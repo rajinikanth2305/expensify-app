@@ -1,24 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ExpenseListItem correctly 1`] = `
-<div>
-  <NavLink
-    activeClassName="active"
-    ariaCurrent="true"
-    exact={true}
-    to="/edit/2"
-  >
-    <h1>
+<NavLink
+  activeClassName="active"
+  ariaCurrent="true"
+  className="list-item"
+  exact={true}
+  to="/edit/2"
+>
+  <div>
+    <h3
+      className="list-item__title"
+    >
       bill
-    </h1>
-  </NavLink>
-  <p>
+    </h3>
+    <span
+      className="list-item__subtitle"
+    >
+      December 28th,1969
+    </span>
+  </div>
+  <h3
+    className="list-item__data"
+  >
     $4.00
-    -
-    December 28th,1969
-  </p>
-  <p>
-    2
-  </p>
-</div>
+  </h3>
+</NavLink>
 `;
