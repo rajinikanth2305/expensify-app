@@ -63,6 +63,6 @@ const mapDispatchToProps=(dispatch,props)=>
 )
 export default connect(mapStateToProps,mapDispatchToProps)(EditExpensePage);
 
-//we can pass the current component props to mapStateToprops passing props as argument
+//using it for github//we can pass the current component props to  mapStateToprops passing props as argument
 //props.history.push is for to go to homepage
-//
+//it was my edit expense page and I am using it to test the application
