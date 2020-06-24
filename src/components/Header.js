@@ -20,3 +20,7 @@ const mapDispatchToProps=(dispatch)=>(
     }
 )
 export default connect(undefined,mapDispatchToProps)(Header);
+
+
+//adding comments to header page
+//adding comments to this page for testing
