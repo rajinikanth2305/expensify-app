@@ -23,3 +23,5 @@ const address=[]
 const [place="New york"]=address
 
 console.log(`you are  in ${place}`)
+
+//added comments in destructuring.js file
